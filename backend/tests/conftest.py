@@ -3,7 +3,7 @@
 Sets TEST_DB_PATH to a fresh temp file BEFORE any `app.*` module is
 imported, so the whole test session runs against an isolated,
 disposable SQLite database — never the real dev database at
-app/db/risk_manager.db. This matters because running the test suite
+app/db/vantage_risk.db. This matters because running the test suite
 shouldn't reseed, mutate, or pollute the review queue you're actually
 using during development or a demo.
 
@@ -19,8 +19,8 @@ import sys
 import tempfile
 from pathlib import Path
 
-_TEST_DB_DIR = tempfile.mkdtemp(prefix="risk_manager_test_")
-os.environ["TEST_DB_PATH"] = str(Path(_TEST_DB_DIR) / "test_risk_manager.db")
+_TEST_DB_DIR = tempfile.mkdtemp(prefix="vantage_risk_test_")
+os.environ["TEST_DB_PATH"] = str(Path(_TEST_DB_DIR) / "test_vantage_risk.db")
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 

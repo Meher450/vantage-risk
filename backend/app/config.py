@@ -41,7 +41,7 @@ BATCH_RESULTS_DIR = OUTPUTS_DIR / "batch_results"
 # (backend/tests/conftest.py) to point at an isolated, disposable SQLite
 # file instead of your real dev database, so running tests never mutates
 # or reseeds the review queue you're actually using.
-DB_PATH = Path(os.environ.get("TEST_DB_PATH", str(BACKEND_DIR / "app" / "db" / "risk_manager.db")))
+DB_PATH = Path(os.environ.get("TEST_DB_PATH", str(BACKEND_DIR / "app" / "db" / "vantage_risk.db")))
 
 # Optional — set this to a webhook URL (Slack incoming webhook, Discord,
 # ntfy.sh, Zapier/Make catch-hook, or any endpoint that accepts a JSON

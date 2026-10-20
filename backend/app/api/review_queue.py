@@ -23,7 +23,7 @@ def list_review_queue() -> List[ReviewCase]:
 def list_resolved_cases() -> List[ReviewCase]:
     """
     The audit trail: every case that's been approved or blocked, most
-    recently resolved first. Backed by SQLite (app/db/risk_manager.db),
+    recently resolved first. Backed by SQLite (app/db/vantage_risk.db),
     so — unlike the earlier in-memory version of this store — these
     persist across server restarts.
     """

@@ -91,7 +91,7 @@ it up — don't let the judge's first click be the cold start.
 
 **Render's free tier disk is not guaranteed to persist across
 redeploys or restarts.** This matters specifically for the SQLite
-review-queue audit trail (`app/db/risk_manager.db`) we built —
+review-queue audit trail (`app/db/vantage_risk.db`) we built —
 resolved cases could reset if the service restarts between sessions.
 This isn't a bug in the app; it's a property of the free hosting tier.
 The database re-seeds automatically on first access either way (see

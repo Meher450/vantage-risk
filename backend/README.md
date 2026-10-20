@@ -131,7 +131,7 @@ payload) and richer structured fields (`risk_score`, `order_id`,
 `z_score`, etc.) for services that accept arbitrary JSON, like Discord
 or ntfy.sh.
 
-To see it fire locally: delete `app/db/risk_manager.db`, restart the
+To see it fire locally: delete `app/db/vantage_risk.db`, restart the
 server, then hit `GET /review` (or open the Review Queue page) — this
 forces a fresh seed of the deterministic dataset's real high-risk
 cases, each one firing a genuine webhook.

@@ -150,7 +150,7 @@ vantage-risk/
 │   │   └── db/
 │   │       ├── database.py      ← engine/session setup
 │   │       ├── init_db.py       ← create_all() on startup
-│   │       └── risk_manager.db  ← the actual SQLite file (legacy name — see §9)
+│   │       └── vantage_risk.db  ← the actual SQLite file
 │   ├── ml/                      ← offline training pipeline (NOT run at request time)
 │   │   ├── generate_synthetic_data.py
 │   │   ├── train.py             ← chargeback model
@@ -477,7 +477,7 @@ Shared state across the whole app is limited to CSS custom properties
    "order database," for every feature except the review queue, IS the
    CSV files on disk.
 2. **Operational state** — the SQLite database at
-   `backend/app/db/risk_manager.db`, which holds only three things: the
+   `backend/app/db/vantage_risk.db`, which holds only three things: the
    review queue's pending/resolved cases, and dedup records for the two
    alert types. This is genuinely transactional state (created by user
    actions — resolving a case), not training data.
@@ -844,12 +844,10 @@ remembering:
 
 ### Potential concerns I noticed (inferred, not stated in the repo — flagged as such)
 
-- **The SQLite file is still named `risk_manager.db`** (`backend/app/config.py:44`,
-  `backend/app/db/risk_manager.db`) even though the project itself was
-  rebranded to "Vantage Risk" this session. This is cosmetic only (it's
-  an internal filename, never exposed via any API response) but worth
-  knowing so it isn't mistaken for a bug or leftover reference to a
-  different system.
+- **The SQLite file was renamed to `vantage_risk.db`** (`backend/app/config.py:44`,
+  `backend/app/db/vantage_risk.db`) to match the "Vantage Risk" rebrand —
+  fixed after this doc was first written, so if you're reading an older
+  copy of this file, this is the current state.
 - **`frontend/README.md`'s quickstart references a `frontend/.env.example`
   file that does not exist** in this repo — a new developer following
   that instruction literally will get a "file not found" on the `cp`
@@ -1001,16 +999,13 @@ demonstrate the fraud-ops features themselves.
 1. Is `backend/outputs/` (generated PDFs/CSVs) supposed to be
    `.gitignore`'d? A few sample files appear to be committed — confirm
    whether that was intentional.
-2. Should `backend/app/db/risk_manager.db`'s filename be updated to match
-   the "Vantage Risk" branding, or is renaming it low-value churn not
-   worth the (small) risk of breaking a path reference?
-3. Is there a plan to add authentication before this is shared more
+2. Is there a plan to add authentication before this is shared more
    broadly than a personal demo? What would the minimum viable approach
    be (API key header? OAuth?) given the current all-synchronous,
    single-process architecture?
-4. Should `frontend/README.md`'s quickstart be corrected to stop
+3. Should `frontend/README.md`'s quickstart be corrected to stop
    referencing a non-existent `.env.example`?
-5. Is the plan to eventually retrain on real transaction data, and if so,
+4. Is the plan to eventually retrain on real transaction data, and if so,
    what would need to change in `train.py`/`train_return_model.py` beyond
    swapping the data source (e.g. are the current categorical feature
    values — `item_category`, `payment_method` — exhaustive of what a
