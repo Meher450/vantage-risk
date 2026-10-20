@@ -1,0 +1,15 @@
+order_id,account_age_days,is_new_account,order_value,item_category,payment_method,discount_pct,shipping_billing_mismatch,ip_country_mismatch,device_reuse_signal,num_previous_orders,num_previous_returns,num_previous_chargebacks,scoring_error
+BATCH-1,30,False,2500,fashion,upi,10,False,False,False,3,0,0,"
+XGBoost Library (libxgboost.dylib) could not be loaded.
+Likely causes:
+  * OpenMP runtime is not installed
+    - vcomp140.dll or libgomp-1.dll for Windows
+    - libomp.dylib for Mac OSX
+    - libgomp"
+BATCH-2,1,True,45000,electronics,cod,2,True,True,True,0,0,2,"
+XGBoost Library (libxgboost.dylib) could not be loaded.
+Likely causes:
+  * OpenMP runtime is not installed
+    - vcomp140.dll or libgomp-1.dll for Windows
+    - libomp.dylib for Mac OSX
+    - libgomp"
