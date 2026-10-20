@@ -10,15 +10,7 @@ Deploy the backend first — the frontend needs its URL.
 
 ## 1. Prerequisite: push to GitHub
 
-Both platforms deploy from a git repo. If you haven't already:
-```bash
-cd vantage-risk  # your repo root, containing backend/, frontend/, render.yaml
-git init
-git add .
-git commit -m "Deploy: backend + frontend"
-git remote add origin <your-github-repo-url>
-git push -u origin main
-```
+Already done — this repo is pushed to `https://github.com/Meher450/vantage-risk`.
 
 ---
 
@@ -35,12 +27,12 @@ git push -u origin main
 4. Under **Environment**, add:
    - `ALLOWED_ORIGINS` — leave blank for now, you'll set this in step 4 once you have the Vercel URL.
 5. Click **Create Web Service**. First deploy takes a few minutes (installing `xgboost`/`shap`/etc.).
-6. Once live, copy the service URL — looks like `https://risk-manager-api.onrender.com`.
+6. Once live, copy the service URL — looks like `https://vantage-risk-api.onrender.com`.
 7. Verify it's actually working:
    ```bash
-   curl https://risk-manager-api.onrender.com/
-   # should return {"status":"ok","service":"risk-manager-api"}
-   curl https://risk-manager-api.onrender.com/metrics
+   curl https://vantage-risk-api.onrender.com/
+   # should return {"status":"ok","service":"vantage-risk-api"}
+   curl https://vantage-risk-api.onrender.com/metrics
    # should return real numbers, not an error
    ```
 
@@ -57,7 +49,7 @@ git push -u origin main
    - **Framework Preset:** Vite (should auto-detect)
    - Build/output settings are already correct via `frontend/vercel.json` — Vercel will pick these up automatically.
 4. Under **Environment Variables**, add:
-   - `VITE_API_BASE_URL` = `https://risk-manager-api.onrender.com` (your actual Render URL from step 2)
+   - `VITE_API_BASE_URL` = `https://vantage-risk-api.onrender.com` (your actual Render URL from step 2)
 
    **This is critical and easy to miss:** Vite bakes environment variables in at *build time*, not runtime. If you add/change this after the first deploy, you must trigger a new deploy for it to take effect — just saving the env var alone does nothing to an already-built app.
 5. Click **Deploy**. Takes 1-2 minutes.
