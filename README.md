@@ -1,5 +1,11 @@
 # Vantage Risk
 
+**Live demo:** https://vantage-risk-delta.vercel.app/ · **API docs:** https://vantage-risk-cfvv.onrender.com/docs
+
+*(Backend runs on Render's free tier — if it's been idle, the first
+request can take 30-60s to cold-start. Give it a moment before
+assuming something's broken.)*
+
 A working risk console for BFSI/e-commerce merchants: stop losing
 margin to fraud, returns, and chargebacks — with **honest metrics
 including false-positive cost**, and **strictly defense-only**.
